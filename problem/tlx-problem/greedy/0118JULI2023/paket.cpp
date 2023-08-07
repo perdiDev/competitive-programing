@@ -1,16 +1,13 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
-#pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h>
 using namespace std;
-
-#define cpyook ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 typedef long long ll;
 typedef long double ld;
 typedef vector<int> vi;
 typedef vector<ll> vl;
 double eps = 1e-12;
+
+#define cpyook ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define forn(i,e) for(ll i = 0; i < e; i++)
 #define ln "\n"
 #define dbg(x) cout<<#x<<" = "<<x<<ln
@@ -28,9 +25,22 @@ void solve(){
 
 int main() {
     cpyook
-    
 
-    
+    ll n, pos, a;
+    vi p;
+
+    cin >> n;
+    forn(i, n) {
+        cin >> a;
+        pos = lower_bound(all(p), a)-p.begin();
+        dbg(pos);
+        if(p.size() == pos)
+            p.pb(a);
+        else
+            p[pos] = a;
+    }
+
+    cout << p.size() << ln;
 
     return 0;
 }
